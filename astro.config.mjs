@@ -4,6 +4,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://recipes.zettca.xyz",
+  site: "https://zettca.xyz",
+  base: "/recipes-astro",
   integrations: [mdx(), sitemap()],
 });
