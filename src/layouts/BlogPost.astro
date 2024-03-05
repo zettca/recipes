@@ -3,9 +3,12 @@ import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"recipes">;
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { id, data } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage } = data;
+
+const editUrl = `https://github.com/zettca/recipes/edit/master/src/content/recipes/${id}`;
 ---
 
 <html lang="en">
@@ -41,6 +44,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
                 )
               }
             </div>
+            <a href={editUrl}>Edit</a>
             <h1 class="mb-2">{title}</h1>
             <hr />
           </div>

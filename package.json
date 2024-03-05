@@ -1,7 +1,8 @@
 {
-  "name": "recipes-astro",
+  "name": "recipes",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.0",
+  "repository": "https://github.com/zettca/recipes",
   "packageManager": "pnpm@8.15.4",
   "scripts": {
     "dev": "astro dev",
