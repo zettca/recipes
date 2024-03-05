@@ -1,7 +1,7 @@
 ---
 title: "First post"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "Jul 08 2022"
+description: "Test post"
+pubDate: "2020-10-10"
 heroImage: "https://i.imgur.com/rNSJsop.jpeg"
 ---
 
