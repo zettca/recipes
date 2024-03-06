@@ -1,0 +1,42 @@
+<form id="create-form" method="POST" class="flex flex-col gap-4">
+  <label>
+    Title
+    <input type="text" name="title" />
+  </label>
+  <label>
+    Description
+    <input type="text" name="description" />
+  </label>
+  <label>
+    Tags (tag1, tag2)
+    <input type="text" name="tags" />
+  </label>
+  <button>Submit</button>
+</form>
+
+<script>
+  import { kebabCase } from "change-case";
+
+  const form = document.getElementById("create-form") as HTMLFormElement;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const values = Object.fromEntries(formData.entries());
+    const filename = `${kebabCase(String(values.title))}.md`;
+    const value = `---
+title: ${values.title}
+description: ${values.description}
+tags: ${values.tags}
+pubDate: ${new Date().toISOString().slice(0, 10)}
+lang: en
+---
+`;
+
+    const searchParams = new URLSearchParams({ filename, value });
+    const baseUrl =
+      "https://github.com/zettca/recipes/new/master/src/content/recipes";
+    const url = `${baseUrl}?${searchParams}`;
+
+    window.open(url, "_blank");
+  });
+</script>

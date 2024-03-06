@@ -20,6 +20,9 @@ dependencies:
   astro:
     specifier: ^4.4.9
     version: 4.4.9(typescript@5.3.3)
+  change-case:
+    specifier: ^5.4.3
+    version: 5.4.3
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
@@ -1613,6 +1616,10 @@ packages:
   /chalk@5.3.0:
     resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+    dev: false
+
+  /change-case@5.4.3:
+    resolution: {integrity: sha512-4cdyvorTy/lViZlVzw2O8/hHCLUuHqp4KpSSP3DlauhFCf3LdnfF+p5s0EAhjKsU7bqrMzu7iQArYfoPiHO2nw==}
     dev: false
 
   /character-entities-html4@2.1.0:

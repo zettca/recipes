@@ -1,0 +1,18 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import CreateForm from "../components/CreateForm.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <main>
+      <h1>🥘 Create Recipe</h1>
+      <CreateForm />
+    </main>
+  </body>
+</html>
