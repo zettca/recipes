@@ -3,7 +3,8 @@ title: Papas de aveia no forno com frutos vermelhos
 description: Healthy stuff
 tags: Snack
 pubDate: 2024-03-06
-lang: en
+lang: pt-pt
+heroImage: "https://i.imgur.com/EyLDZpP.jpeg"
 ---
 
 Serve 16 porções (aprox 150kcal cada)
