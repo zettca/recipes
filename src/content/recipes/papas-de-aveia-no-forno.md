@@ -1,5 +1,5 @@
 ---
-title: Papas de aveia no forno
+title: Papas de aveia no forno com frutos vermelhos
 description: Healthy stuff
 tags: Snack
 pubDate: 2024-03-06
@@ -27,4 +27,4 @@ Serve 16 porções (aprox 150kcal cada)
 
 Dica: Pode congelar. À medida que queira consumir, basta aquecer no microondas ou forno, ou deixar descongelar à temperatura ambiente.
 
-<img src="https://imgur.com/a/cfqG9E3" alt="Rice" width="600">
+<img src="https://i.imgur.com/EyLDZpP.jpeg" alt="Papas de aveia no forno com frutos vermelhos" width="600">
