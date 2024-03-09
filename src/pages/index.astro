@@ -107,9 +107,7 @@ const posts = (await getCollection("recipes")).sort(
                       alt="Post image"
                     />
                     <h4 class="title">{post.data.title}</h4>
-                    <p class="date">
-                      <FormattedDate date={post.data.pubDate} />
-                    </p>
+                    <p class="date">{post.data.tags}</p>
                   </Link>
                 </li>
               ))
