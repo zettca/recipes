@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import BaseHead from "../components/BaseHead.astro";
 import Link from "../components/Link.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION, DEFAULT_HERO } from "../consts";
 
 const posts = (await getCollection("recipes")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -91,7 +91,6 @@ const posts = (await getCollection("recipes")).sort(
       <p>
         <Link href="new">Create a new recipe</Link>
       </p>
-      <p>Here's a few recipes:</p>
       <br />
       <section>
         <ul>
@@ -102,8 +101,8 @@ const posts = (await getCollection("recipes")).sort(
                   <img
                     width={720}
                     height={360}
-                    src={post.data.heroImage}
-                    alt=""
+                    src={post.data.heroImage || DEFAULT_HERO}
+                    alt="Post image"
                   />
                   <h4 class="title">{post.data.title}</h4>
                   <p class="date">

@@ -4,7 +4,7 @@ description: Uma variação do bolo de banana, versão brownie
 tags: Snack
 pubDate: 2024-03-09
 lang: pt
-heroImage: "https://i.imgur.com/rNSJsop.jpeg"
+heroImage: ""
 ---
 
 ## Ingredientes

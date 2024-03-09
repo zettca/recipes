@@ -3,3 +3,6 @@
 
 export const SITE_TITLE = "Recipes";
 export const SITE_DESCRIPTION = "Yummy recipes, step by step! 😋";
+
+export const DEFAULT_HERO =
+  "https://images.pexels.com/photos/563067/pexels-photo-563067.jpeg";

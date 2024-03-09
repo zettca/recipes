@@ -5,7 +5,7 @@ const recipes = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),
-    description: z.string(),
+    description: z.string().optional().nullable(),
     tags: z.string().optional(),
     author: z.string().optional(),
     lang: z.string().default("en"),

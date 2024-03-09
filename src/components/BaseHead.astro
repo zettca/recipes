@@ -1,21 +1,18 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
+import { DEFAULT_HERO } from "../consts";
 import "../styles/global.css";
 
 interface Props {
   title: string;
-  description: string;
+  description?: string | null;
   image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const {
-  title,
-  description,
-  image = "https://i.imgur.com/rNSJsop.jpeg",
-} = Astro.props;
+const { title, description, image = DEFAULT_HERO } = Astro.props;
 ---
 
 <!-- Global Metadata -->
