@@ -5,7 +5,7 @@ const recipes = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),
-    description: z.string().optional().nullable(),
+    description: z.string().optional().default(""),
     tags: z.string().optional(),
     author: z.string().optional(),
     /** hidden in the homepage */
@@ -13,7 +13,6 @@ const recipes = defineCollection({
     lang: z.string().default("en"),
     // Transform string to Date object
     pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
   }),
 });

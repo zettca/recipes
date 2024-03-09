@@ -10,7 +10,7 @@ type ExtraProps = {
 type Props = CollectionEntry<"recipes"> & ExtraProps;
 
 const { id, data, lastModified } = Astro.props;
-const { title, description, pubDate, updatedDate, heroImage } = data;
+const { title, description, pubDate, heroImage } = data;
 
 const editUrl = `https://github.com/zettca/recipes/edit/master/src/content/recipes/${id}`;
 

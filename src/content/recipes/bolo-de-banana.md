@@ -1,6 +1,5 @@
 ---
 title: Bolo de banana
-description: 
 tags: Snack
 pubDate: 2024-03-09
 lang: en

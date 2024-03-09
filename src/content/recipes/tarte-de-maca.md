@@ -1,6 +1,5 @@
 ---
 title: Tarte de Maçã
-description: 
 tags: dessert
 pubDate: 2024-03-09
 lang: pt
