@@ -3,12 +3,20 @@ import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 
-type Props = CollectionEntry<"recipes">;
+type ExtraProps = {
+  lastModified?: Date;
+};
 
-const { id, data } = Astro.props;
+type Props = CollectionEntry<"recipes"> & ExtraProps;
+
+const { id, data, lastModified } = Astro.props;
 const { title, description, pubDate, updatedDate, heroImage } = data;
 
 const editUrl = `https://github.com/zettca/recipes/edit/master/src/content/recipes/${id}`;
+
+const sameDate = (d1: Date, d2: Date) => {
+  return d1.toISOString().slice(0, 10) === d2.toISOString().slice(0, 10);
+};
 ---
 
 <html lang="en">
@@ -37,10 +45,10 @@ const editUrl = `https://github.com/zettca/recipes/edit/master/src/content/recip
             <div class="mb-2 color-gray">
               <FormattedDate date={pubDate} />
               {
-                updatedDate && (
-                  <div class="italic">
-                    Last updated on <FormattedDate date={updatedDate} />
-                  </div>
+                lastModified && !sameDate(pubDate, lastModified) && (
+                  <span class="italic">
+                    (edited <FormattedDate date={lastModified} />)
+                  </span>
                 )
               }
             </div>

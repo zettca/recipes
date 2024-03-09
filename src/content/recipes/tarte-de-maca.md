@@ -1,7 +1,7 @@
 ---
-title: Tarte de maca
+title: Tarte de Maçã
 description: 
-tags: Sobremesa
+tags: dessert
 pubDate: 2024-03-09
 lang: pt
 heroImage: "https://i.imgur.com/KhQ5ODn.jpeg"

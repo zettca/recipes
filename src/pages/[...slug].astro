@@ -12,9 +12,10 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"recipes">;
 
 const post = Astro.props;
-const { Content } = await post.render();
+const { Content, remarkPluginFrontmatter } = await post.render();
+const { lastModified } = remarkPluginFrontmatter;
 ---
 
-<BlogPost {...post}>
+<BlogPost {...post} lastModified={new Date(lastModified)}>
   <Content />
 </BlogPost>
