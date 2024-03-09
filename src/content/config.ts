@@ -8,6 +8,8 @@ const recipes = defineCollection({
     description: z.string().optional().nullable(),
     tags: z.string().optional(),
     author: z.string().optional(),
+    /** hidden in the homepage */
+    hidden: z.boolean().default(false),
     lang: z.string().default("en"),
     // Transform string to Date object
     pubDate: z.coerce.date(),

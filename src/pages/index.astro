@@ -95,22 +95,24 @@ const posts = (await getCollection("recipes")).sort(
       <section>
         <ul>
           {
-            posts.map((post) => (
-              <li>
-                <Link href={`${post.slug}`}>
-                  <img
-                    width={720}
-                    height={360}
-                    src={post.data.heroImage || DEFAULT_HERO}
-                    alt="Post image"
-                  />
-                  <h4 class="title">{post.data.title}</h4>
-                  <p class="date">
-                    <FormattedDate date={post.data.pubDate} />
-                  </p>
-                </Link>
-              </li>
-            ))
+            posts
+              .filter((post) => !post.data.hidden)
+              .map((post) => (
+                <li>
+                  <Link href={`${post.slug}`}>
+                    <img
+                      width={720}
+                      height={360}
+                      src={post.data.heroImage || DEFAULT_HERO}
+                      alt="Post image"
+                    />
+                    <h4 class="title">{post.data.title}</h4>
+                    <p class="date">
+                      <FormattedDate date={post.data.pubDate} />
+                    </p>
+                  </Link>
+                </li>
+              ))
           }
         </ul>
       </section>
