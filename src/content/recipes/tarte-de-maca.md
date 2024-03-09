@@ -1,5 +1,5 @@
 ---
-title: Tarte de maçã
+title: Tarte de maca
 description: 
 tags: Sobremesa
 pubDate: 2024-03-09
