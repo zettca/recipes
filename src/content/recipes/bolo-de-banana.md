@@ -8,12 +8,12 @@ heroImage: ""
 
 ## Ingredientes
 
-1. 3 bananas maduras
-2. 3 ovos inteiros
-3. 150g de farinha de aveia
-4. 1 colher de sobremesa de fermento
-5. Coco ralado q.b.
-6. Canela q.b.
+- 3 bananas maduras
+- 3 ovos inteiros
+- 150g de farinha de aveia
+- 1 colher de sobremesa de fermento
+- Coco ralado q.b.
+- Canela q.b.
 
 
 ## Preparação

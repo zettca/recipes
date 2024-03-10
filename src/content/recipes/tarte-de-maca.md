@@ -8,15 +8,15 @@ heroImage: "https://i.imgur.com/KhQ5ODn.jpeg"
 
 ## Ingredients
 
-1. 6 maçãs
-2. 500ml de leite
-3. 2 ovos inteiros
-4. 2 gemas
-5. 40g de farinha maizena
-6. 1 limão
-7. 1 pau de canela
-8. Canela q.b.
-9. 1 massa quebrada
+- 6 maçãs
+- 500ml de leite
+- 2 ovos inteiros
+- 2 gemas
+- 40g de farinha maizena
+- 1 limão
+- 1 pau de canela
+- Canela q.b.
+- 1 massa quebrada
 
 
 ## Preparation

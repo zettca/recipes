@@ -12,10 +12,10 @@ This is an example of a recipe post. WIP
 
 ## Ingredients
 
-1. 200g rice
-2. 600ml water
-3. 2kg awesomeness
-4. 1gg cheese
+- 200g rice
+- 600ml water
+- 2kg awesomeness
+- 1tg cheese
 
 ## Preparation
 

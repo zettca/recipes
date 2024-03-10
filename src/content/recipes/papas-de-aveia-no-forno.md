@@ -11,11 +11,11 @@ Serve 16 porções (aprox 150kcal cada)
 
 ## Ingredientes
 
-1. 400g de flocos de aveia
-2. 800ml de leite magro ou bebida vegetal
-3. Puré de maçã (4 maçãs cozidas com canela)
-4. Canela q.b.
-5. Fruta a gosto (framboesas, morangos ou mirtilos)
+- 400g de flocos de aveia
+- 800ml de leite magro ou bebida vegetal
+- Puré de maçã (4 maçãs cozidas com canela)
+- Canela q.b.
+- Fruta a gosto (framboesas, morangos ou mirtilos)
 
 ## Preparação
 

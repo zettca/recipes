@@ -9,13 +9,13 @@ heroImage: ""
 
 ## Ingredientes
 
-1. 3 bananas
-2. 2 ovos inteiros
-3. 3 colheres de farinha de aveia
-4. 1 colher de linhaça
-5. 2 colheres de sopa de côco ralado
-6. Canela q.b.
-8. Oleo de côco q.b.
+- 3 bananas
+- 2 ovos inteiros
+- 3 colheres de farinha de aveia
+- 1 colher de linhaça
+- 2 colheres de sopa de côco ralado
+- Canela q.b.
+- Oleo de côco q.b.
 
 ## Preparação
 
