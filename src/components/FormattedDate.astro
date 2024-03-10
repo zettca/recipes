@@ -6,14 +6,11 @@ interface Props extends HTMLAttributes<"time"> {
 }
 
 const { date, ...props } = Astro.props;
+const localeDate = date.toLocaleDateString("en-uk", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
 ---
 
-<time datetime={date.toISOString()} {...props}>
-  {
-    date.toLocaleDateString(undefined, {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    })
-  }
-</time>
+<time datetime={date.toISOString()} {...props}>{localeDate}</time>

@@ -46,6 +46,8 @@ const posts = (await getCollection("recipes")).sort(
       ul li img {
         margin-bottom: 0.5rem;
         border-radius: 12px;
+        max-height: 400px;
+        object-fit: cover;
       }
       ul li a {
         display: block;

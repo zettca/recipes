@@ -3,11 +3,14 @@ import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"a">;
 
-const { href, class: className, ...props } = Astro.props;
+const { href: hrefProp, class: className, ...props } = Astro.props;
+const href = [import.meta.env.BASE_URL, hrefProp]
+  .join("/")
+  .replace(/\/+/g, "/");
 ---
 
 <a
-  href={`${import.meta.env.BASE_URL}/${href}`}
+  href={href}
   class:list={["inline-block decoration-none", className]}
   {...props}
 >
