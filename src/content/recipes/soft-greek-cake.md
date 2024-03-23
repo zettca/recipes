@@ -26,6 +26,8 @@ heroImage: "https://i.imgur.com/sxM5oIG.jpeg"
 
 Nota: Apenas experimentei com iogurte grego de maracujá e pêssego. Funciona também com iogurte grego magro, para uma versao menos doce.
 
+Índice calórico: Aproximadamente 780 kcal (bolo inteiro)
+
 <img src="https://i.imgur.com/sxM5oIG.jpeg" alt="soft greek cake" width="600">
 A imagem é representativa da receita, mas com metade de cada ingrediente.
 ---
