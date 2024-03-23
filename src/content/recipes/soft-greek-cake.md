@@ -12,9 +12,8 @@ heroImage: "https://i.imgur.com/sxM5oIG.jpeg"
 - 4 ovos
 - 2 iogurtes gregos (250g)
 - 60g de farinha maizena
-Opcionais:
-- 1 colher de sopa de essência de baunilha
-- Fruta a gosto
+- (Opcional) 1 colher de sopa de essência de baunilha
+- (Opcional) Fruta a gosto
 
 
 ## Preparation
