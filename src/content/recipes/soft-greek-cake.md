@@ -12,21 +12,21 @@ heroImage: "https://i.imgur.com/sxM5oIG.jpeg"
 - 4 ovos
 - 2 iogurtes gregos (250g)
 - 60g de farinha maizena
-
 Opcionais:
-- 1 colher de sopa de essencia de baunilha
+- 1 colher de sopa de essência de baunilha
 - Fruta a gosto
 
 
 ## Preparation
 
-1. Numa taça, bata os 4 ovos com uma vara de arames
-2. Junte os 2 iogurtes gregos, a essência de bauninha (opcional) e as 60g de maizena e misture
-3. Coloque numa forma de bolo inglês forrada com papel vegetal
-4. Leve ao forno (pré-aquecido) a 180° por 30 minutos. A consistência deverá ficar de bolo esponjoso. pode conferir com um palito se o interior já cozinhou.
+1. Numa taça, bata os 4 ovos com uma vara de arames.
+2. Junte os 2 iogurtes gregos, a essência de bauninha (opcional) e as 60g de maizena, e misture.
+3. Coloque numa forma de bolo inglês, forrada com papel vegetal.
+4. Leve ao forno (pré-aquecido) a 180° por 30 minutos. A consistência deverá ficar de bolo esponjoso. Pode conferir com um palito se o interior já cozinhou.
 5. Sirva com fruta, a gosto
 
 Nota: Apenas experimentei com iogurte grego de maracujá e pêssego. Funciona também com iogurte grego magro, para uma versao menos doce.
 
 <img src="https://i.imgur.com/sxM5oIG.jpeg" alt="soft greek cake" width="600">
+A imagem é representativa da receita, mas com metade de cada ingrediente.
 ---
