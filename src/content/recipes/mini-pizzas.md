@@ -24,7 +24,7 @@ Para o recheio:
 Para a massa:
 1. Misture a farinha de aveia com o iogurte até descolar dos dedos
 2. Estenda a massa com ajuda de um rolo
-3. Com um copo de molde, pressiona sobre a massa para criar pequenos círculos
+3. Com a parte superior de um copo, pressione sobre a massa para criar pequenos círculos
 4. Leve à air fryer por 6 minutos a 180°
 
 Retire as mini massas da air fryer e coloque os toppings a gosto:
