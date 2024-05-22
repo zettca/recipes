@@ -1,7 +1,7 @@
 <form id="create-form" method="POST" class="flex flex-col gap-4">
   <label>
     Title
-    <input type="text" name="title" />
+    <input required type="text" name="title" />
   </label>
   <label>
     Description
@@ -17,16 +17,14 @@
 <script>
   import { kebabCase } from "change-case";
 
-  const form = document.getElementById("create-form") as HTMLFormElement;
-  form.addEventListener("submit", async (event) => {
+  document.querySelector("form")?.addEventListener("submit", function (event) {
     event.preventDefault();
-    const formData = new FormData(form);
-    const values = Object.fromEntries(formData.entries());
-    const filename = `${kebabCase(String(values.title))}.md`;
+    const data = Object.fromEntries(new FormData(this));
+    const filename = `${kebabCase(String(data.title))}.md`;
     const value = `---
-title: ${values.title}
-description: ${values.description || ""}
-tags: ${values.tags || ""}
+title: ${data.title}
+description: ${data.description}
+tags: ${data.tags}
 pubDate: ${new Date().toISOString().slice(0, 10)}
 lang: en
 ---
