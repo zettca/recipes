@@ -1,4 +1,5 @@
 import { kebabCase } from "change-case";
+import { toISODate } from "../../utils";
 
 const baseUrl =
   "https://github.com/zettca/recipes/new/master/src/content/recipes";
@@ -11,7 +12,7 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 title: ${data.title}
 description: ${data.description}
 tags: ${data.tags}
-pubDate: ${new Date().toISOString().slice(0, 10)}
+pubDate: ${toISODate(new Date())}
 lang: en
 ---
 `;
