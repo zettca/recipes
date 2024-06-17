@@ -1,6 +1,6 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import CreateForm from "../components/CreateForm.astro";
+import { CreateForm } from "../components/react/CreateForm";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
@@ -8,11 +8,16 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main {
+        width: 960px;
+      }
+    </style>
   </head>
   <body>
     <main>
       <h1>🥘 Create Recipe</h1>
-      <CreateForm />
+      <CreateForm client:visible />
     </main>
   </body>
 </html>
