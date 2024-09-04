@@ -4,7 +4,7 @@ description: Healthy stuff
 tags: Snack
 pubDate: 2024-03-09
 lang: pt
-heroImage: ""
+heroImage: "https://i.imgur.com/hN0b7wM.jpeg"
 ---
 
 ## Ingredientes
@@ -29,4 +29,4 @@ heroImage: ""
 
 Dica: Poderá utilizar manteiga de amendoim ou iogurte proteico de chocolate como topping ou entre 2 panquecas
 
-<img src="" alt="Panquecas de banana" width="600">
+<img src="https://i.imgur.com/hN0b7wM.jpeg" alt="Panquecas de banana" width="600">
