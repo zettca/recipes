@@ -3,7 +3,7 @@ title: Bolo de banana
 tags: Snack
 pubDate: 2024-03-09
 lang: en
-heroImage: ""
+heroImage: "https://i.imgur.com/MfDTibW.jpeg"
 ---
 
 ## Ingredientes
@@ -27,4 +27,4 @@ heroImage: ""
 7. Leve ao forno pré-aquecido a 180ºC durante 45/55 minutos
 8. Desenforme ainda quente, corte em fatias e disfrute!
 
-<img src="" alt="Bolo de banana" width="600">
+<img src="https://i.imgur.com/MfDTibW.jpeg" alt="Bolo de banana" width="600">
