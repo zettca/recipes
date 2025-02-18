@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Link from "../components/Link.astro";
-import { SITE_TITLE, SITE_DESCRIPTION, DEFAULT_HERO } from "../consts";
+import { DEFAULT_HERO, SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
 const posts = (await getCollection("recipes")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -100,7 +100,7 @@ const posts = (await getCollection("recipes")).sort(
               .filter((post) => !post.data.hidden)
               .map((post) => (
                 <li>
-                  <Link href={`${post.slug}`}>
+                  <Link href={`${post.id}`}>
                     <img
                       width={720}
                       height={360}

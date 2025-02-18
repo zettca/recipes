@@ -1,8 +1,8 @@
 // uno.config.ts
-import { defineConfig, presetUno, presetTypography } from "unocss";
-import type { Theme } from "unocss/preset-uno";
 import presetIcons from "@unocss/preset-icons";
+import { defineConfig, presetTypography, presetUno } from "unocss";
 import presetTheme from "unocss-preset-theme";
+import type { Theme } from "unocss/preset-uno";
 
 export default defineConfig({
   presets: [

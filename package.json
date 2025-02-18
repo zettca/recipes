@@ -9,28 +9,33 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
+    "fmt": "prettier --check .",
     "astro": "astro"
   },
-  "packageManager": "pnpm@8.15.8+sha512.d1a029e1a447ad90bc96cd58b0fad486d2993d531856396f7babf2d83eb1823bb83c5a3d0fc18f675b2d10321d49eb161fece36fe8134aa5823ecd215feed392",
+  "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af",
+  "prettier": "@zettca/prettier-config",
   "dependencies": {
-    "@astrojs/check": "^0.5.6",
-    "@astrojs/mdx": "^2.1.1",
-    "@astrojs/react": "^3.0.10",
-    "@astrojs/rss": "^4.0.5",
-    "@astrojs/sitemap": "^3.1.1",
-    "@iconify-json/tabler": "^1.1.106",
-    "@types/react": "^18.2.64",
-    "@types/react-dom": "^18.2.21",
-    "@unocss/preset-icons": "^0.58.5",
-    "astro": "^4.4.9",
-    "change-case": "^5.4.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^5.3.3"
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^4.0.8",
+    "@astrojs/react": "^4.2.0",
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.2.1",
+    "@iconify-json/tabler": "^1.2.16",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@unocss/preset-icons": "^66.0.0",
+    "astro": "^5.3.0",
+    "change-case": "^5.4.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.7.3"
   },
   "devDependencies": {
-    "@unocss/reset": "^0.58.5",
-    "unocss": "^0.58.5",
-    "unocss-preset-theme": "^0.12.0"
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@unocss/reset": "^66.0.0",
+    "@zettca/prettier-config": "^0.2.0",
+    "prettier": "^3.5.1",
+    "unocss": "^66.0.0",
+    "unocss-preset-theme": "^0.14.1"
   }
 }

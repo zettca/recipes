@@ -1,18 +1,18 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import BlogPost from "../layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
   const recipes = await getCollection("recipes");
   return recipes.map((recipe) => ({
-    params: { slug: recipe.slug },
+    params: { slug: recipe.id },
     props: recipe,
   }));
 }
 type Props = CollectionEntry<"recipes">;
 
 const post = Astro.props;
-const { Content, remarkPluginFrontmatter } = await post.render();
+const { Content, remarkPluginFrontmatter } = await render(post);
 const { lastModified } = remarkPluginFrontmatter;
 ---
 
