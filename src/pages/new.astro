@@ -8,16 +8,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      main {
-        width: 960px;
-      }
-    </style>
   </head>
   <body>
     <main>
-      <h1>🥘 Create Recipe</h1>
-      <CreateForm client:visible />
+      <h1>🥘 New Recipe</h1>
+      <CreateForm client:only />
     </main>
   </body>
 </html>

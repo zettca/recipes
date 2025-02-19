@@ -14,101 +14,54 @@ const posts = (await getCollection("recipes")).sort(
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <style>
-      main {
-        width: 960px;
-      }
-      ul {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-      ul li {
-        width: calc(50% - 1rem);
-      }
-      ul li * {
-        text-decoration: none;
-        transition: 0.2s ease;
-      }
       ul li:first-child {
-        width: 100%;
+        grid-column: span 2;
         margin-bottom: 1rem;
         text-align: center;
-      }
-      ul li:first-child img {
-        width: 100%;
-      }
-      ul li:first-child .title {
-        font-size: 2.369rem;
-      }
-      ul li img {
-        margin-bottom: 0.5rem;
-        border-radius: 12px;
-        max-height: 400px;
-        object-fit: cover;
-      }
-      ul li a {
-        display: block;
-      }
-      .title {
-        margin: 0;
-        color: rgb(var(--black));
-        line-height: 1;
-      }
-      .date {
-        margin: 0;
-        color: rgb(var(--gray));
-      }
-      ul li a:hover h4,
-      ul li a:hover .date {
-        color: rgb(var(--accent));
-      }
-      ul a:hover img {
-        box-shadow: var(--box-shadow);
-      }
-      @media (max-width: 720px) {
-        ul {
-          gap: 0.5em;
+        & h4 {
+          font-size: 2.4rem;
         }
-        ul li {
+        & img {
           width: 100%;
-          text-align: center;
         }
-        ul li:first-child {
-          margin-bottom: 0;
+      }
+      ul a:hover {
+        & h4 {
+          color: var(--accent);
         }
-        ul li:first-child .title {
-          font-size: 1.563em;
+        & img {
+          transition: 0.2s ease;
+          box-shadow: var(--box-shadow);
         }
       }
     </style>
   </head>
   <body>
-    <main>
+    <main class="w-960px">
       <h1>🥘 Recipes</h1>
-      <p>Welcome to this recipes blog 👋</p>
-      <p>
-        <Link href="new">Create a new recipe</Link>
+      <p class="text-lg text-end">
+        <Link href="new">Add recipe</Link>
       </p>
-      <br />
       <section>
-        <ul>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {
             posts
               .filter((post) => !post.data.hidden)
               .map((post) => (
                 <li>
-                  <Link href={`${post.id}`}>
+                  <Link href={post.id} class="!block">
                     <img
                       width={720}
                       height={360}
                       src={post.data.heroImage || DEFAULT_HERO}
+                      class:list={[
+                        "rounded-3 max-h-400px object-cover",
+                        !post.data.heroImage && "blur-4px",
+                      ]}
                       alt="Post image"
                     />
-                    <h4 class="title">{post.data.title}</h4>
-                    <p class="date">{post.data.tags}</p>
+                    <h4 class="m-0 text-black">{post.data.title}</h4>
+                    <div class="date text-gray">{post.data.tags}</div>
                   </Link>
                 </li>
               ))
