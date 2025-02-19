@@ -93,13 +93,15 @@ function ContentEditor() {
           listsPlugin(),
           thematicBreakPlugin(),
           toolbarPlugin({
-            toolbarClassName: "!rounded-0",
+            toolbarClassName: "!rounded-0 flex-wrap ![&>*]:m-0",
             toolbarContents: () => (
               <>
                 <BoldItalicUnderlineToggles />
                 <ListsToggle />
                 <div className="flex-1" />
-                <BlockTypeSelect />
+                <div className="[&_button]:w-fit [&_button]:m-0">
+                  <BlockTypeSelect />
+                </div>
                 <UndoRedo />
               </>
             ),
