@@ -4,7 +4,7 @@ description: Piano de porco com ananás e noisettes
 tags: 
 pubDate: 2026-04-05
 lang: en
-heroImage: "https://i.imgur.com/MfDTibW.jpeg"
+heroImage: "https://i.imgur.com/EnpaATJ.jpeg"
 ---
 
 ## Ingredientes para 2 pessoas:
