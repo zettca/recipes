@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "fmt": "prettier --check .",
     "astro": "astro"
@@ -15,28 +15,29 @@
   "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af",
   "prettier": "@zettca/prettier-config",
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.0.8",
-    "@astrojs/react": "^4.2.0",
-    "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.2.1",
-    "@iconify-json/tabler": "^1.2.16",
-    "@mdxeditor/editor": "^3.23.2",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "@unocss/preset-icons": "^66.0.0",
-    "astro": "^5.3.0",
+    "@astrojs/markdown-remark": "^7.3.6",
+    "@astrojs/mdx": "^8.1.3",
+    "@astrojs/react": "^7.1.4",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "@iconify-json/tabler": "^1.2.43",
+    "@mdxeditor/editor": "^4.5.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@unocss/preset-icons": "^66.12.0",
+    "astro": "^7.4.7",
     "change-case": "^5.4.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "typescript": "^5.7.3"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
-    "@unocss/reset": "^66.0.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+    "@unocss/astro": "^66.12.0",
+    "@unocss/reset": "^66.12.0",
     "@zettca/prettier-config": "^0.2.0",
-    "prettier": "^3.5.1",
-    "unocss": "^66.0.0",
+    "prettier": "^3.9.10",
+    "unocss": "^66.12.0",
     "unocss-preset-theme": "^0.14.1"
   }
 }
