@@ -1,9 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
-import FormattedDate from "../components/FormattedDate.astro";
-import Link from "../components/Link.astro";
-import { toISODate } from "../utils";
+import PostMeta from "../components/PostMeta.astro";
+import Tags from "../components/Tags.astro";
 
 type ExtraProps = {
   lastModified?: Date;
@@ -12,13 +11,14 @@ type ExtraProps = {
 type Props = CollectionEntry<"recipes"> & ExtraProps;
 
 const { id, data, lastModified } = Astro.props;
-const { title, description, pubDate, heroImage } = data;
+const { title, description, pubDate, heroImage, tags } = data;
 
 const editUrl = `https://github.com/zettca/recipes/edit/master/src/content/recipes/${id}.md`;
 
-const isSameDate = (d1: Date, d2: Date) => toISODate(d1) === toISODate(d2);
+const meta = { pubDate, lastModified, editUrl };
 ---
 
+<!doctype html>
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
@@ -27,31 +27,26 @@ const isSameDate = (d1: Date, d2: Date) => toISODate(d1) === toISODate(d2);
   <body>
     <main class="w-full m-0">
       <article class="prose m-auto text-lg text-pretty">
-        <div class="flex flex-wrap flex-col sm:flex-row items-baseline mb-4">
-          <div class="flex items-center flex-1 gap-2 text-4xl">
-            <Link class="i-tabler-arrow-left" href="/" />
-            <h1 class="text-size-inherit">{title}</h1>
-          </div>
-          <div class="grid self-end text-end leading-none color-gray">
-            <FormattedDate date={pubDate} />
-            {
-              lastModified && !isSameDate(pubDate, lastModified) && (
-                <span class="italic text-sm">
-                  (updated <FormattedDate date={lastModified} />)
-                </span>
-              )
-            }
-            <a href={editUrl}>Edit</a>
-          </div>
-        </div>
         {
-          heroImage && (
-            <img
-              class="mx-auto rounded w-full aspect-square md:aspect-video object-cover"
-              height={300}
-              src={heroImage}
-              alt=""
-            />
+          heroImage ? (
+            <header class="cover mb-8">
+              <img
+                class="aspect-square md:aspect-video"
+                src={heroImage}
+                alt=""
+              />
+              <div class="cover-body">
+                <Tags tags={tags} />
+                <h1 class="cover-title text-4xl">{title}</h1>
+                <PostMeta {...meta} class="opacity-85" />
+              </div>
+            </header>
+          ) : (
+            <header class="mb-8 grid gap-3">
+              <h1 class="text-4xl m-0">{title}</h1>
+              <Tags tags={tags} class="color-[var(--muted)]" />
+              <PostMeta {...meta} class="color-[var(--muted)]" />
+            </header>
           )
         }
         <div>

@@ -84,7 +84,7 @@ function ContentEditor() {
         markdown={value}
         onChange={setValue}
         className="w-full border"
-        contentEditableClassName="min-h-360px [&_ul]:list-disc ![&_ul]:px-5 [&_ol]:list-decimal ![&_ol]:px-5"
+        contentEditableClassName="text-[var(--fg)]! min-h-360px [&_ul]:list-disc ![&_ul]:px-5 [&_ol]:list-decimal ![&_ol]:px-5"
         toMarkdownOptions={{
           bullet: "-",
         }}

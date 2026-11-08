@@ -1,0 +1,50 @@
+---
+import { toISODate } from "../utils";
+import FormattedDate from "./FormattedDate.astro";
+
+interface Props {
+  pubDate: Date;
+  lastModified?: Date;
+  editUrl?: string;
+  class?: string;
+}
+
+const { pubDate, lastModified, editUrl, class: className } = Astro.props;
+
+const showUpdated =
+  lastModified && toISODate(lastModified) !== toISODate(pubDate);
+---
+
+<div
+  class:list={[
+    "flex flex-wrap items-center gap-x-4 gap-y-1 text-sm",
+    className,
+  ]}
+>
+  <span class="inline-flex items-center gap-1" title="Published">
+    <span class="i-tabler-calendar"></span>
+    <FormattedDate date={pubDate} />
+  </span>
+  {
+    showUpdated && (
+      <span class="inline-flex items-center gap-1" title="Last updated">
+        <span class="i-tabler-refresh" />
+        <span>
+          Updated <FormattedDate date={lastModified} />
+        </span>
+      </span>
+    )
+  }
+  {
+    editUrl && (
+      <a
+        class="inline-flex items-center gap-1 ml-auto color-inherit"
+        href={editUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="i-tabler-edit" /> Edit
+      </a>
+    )
+  }
+</div>

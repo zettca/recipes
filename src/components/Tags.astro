@@ -1,0 +1,45 @@
+---
+interface Props {
+  tags?: string | null;
+  class?: string;
+}
+
+const { tags, class: className } = Astro.props;
+const tagList = (tags ?? "")
+  .split(",")
+  .map((tag) => tag.trim())
+  .filter(Boolean);
+---
+
+{
+  tagList.length > 0 && (
+    <ul class:list={["tags", className]}>
+      {tagList.map((tag) => (
+        <li class="tag">{tag}</li>
+      ))}
+    </ul>
+  )
+}
+
+<style>
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tag {
+    padding: 0.1rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: lowercase;
+    color: inherit;
+    background-color: color-mix(in srgb, currentColor 18%, transparent);
+    border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+    backdrop-filter: blur(6px);
+  }
+</style>

@@ -1,68 +1,53 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Link from "../components/Link.astro";
+import PostMeta from "../components/PostMeta.astro";
+import Tags from "../components/Tags.astro";
 import { DEFAULT_HERO, SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
-const posts = (await getCollection("recipes")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const posts = (await getCollection("recipes"))
+  .filter((post) => !post.data.hidden)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      ul li:first-child {
-        margin-bottom: 1rem;
-        text-align: center;
-        & h4 {
-          font-size: 2.4rem;
-        }
-        & img {
-          width: 100%;
-        }
-      }
-      ul a:hover {
-        & h4 {
-          color: var(--accent);
-        }
-        & img {
-          transition: 0.2s ease;
-          box-shadow: var(--box-shadow);
-        }
-      }
-    </style>
   </head>
   <body>
-    <main class="w-960px">
-      <h1>🥘 Recipes</h1>
-      <p class="text-lg text-end">
-        <Link href="new">Add recipe</Link>
-      </p>
+    <main class="w-5xl">
+      <header class="flex flex-wrap justify-between items-baseline mb-8">
+        <h1>🥘 Recipes</h1>
+        <p class="text-lg text-end">
+          <Link href="new">+ Add recipe</Link>
+        </p>
+      </header>
+
       <section>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <ul class="grid list-none p-0 m-0 grid-cols-1 md:grid-cols-2 gap-8">
           {
-            posts
-              .filter((post) => !post.data.hidden)
-              .map((post) => (
-                <li class="md:first:col-span-2">
-                  <Link href={post.id} class="!block">
-                    <img
-                      height={320}
-                      src={post.data.heroImage || DEFAULT_HERO}
-                      class:list={[
-                        "w-full max-h-320px rounded-3 object-cover",
-                        !post.data.heroImage && "blur-4px",
-                      ]}
-                      alt="Post image"
-                    />
-                    <h4 class="m-0 text-black">{post.data.title}</h4>
-                    <div class="date text-gray">{post.data.tags}</div>
-                  </Link>
-                </li>
-              ))
+            posts.map((post) => (
+              <li class="md:first:col-span-2">
+                <Link href={post.id} class="cover !block">
+                  <img
+                    height={320}
+                    src={post.data.heroImage || DEFAULT_HERO}
+                    class:list={[
+                      "aspect-video",
+                      !post.data.heroImage && "blur-4px scale-110",
+                    ]}
+                    alt=""
+                  />
+                  <div class="cover-body">
+                    <Tags tags={post.data.tags} />
+                    <h2 class="cover-title text-2xl">{post.data.title}</h2>
+                    <PostMeta pubDate={post.data.pubDate} class="opacity-85" />
+                  </div>
+                </Link>
+              </li>
+            ))
           }
         </ul>
       </section>

@@ -5,21 +5,46 @@
  */
 
 :root {
-  /* color-scheme: light dark; */
-  --accent: #2337ff;
-  --accent-dark: #000d8a;
-  --gray: 96, 115, 159;
-  --gray-light: 229, 233, 240;
-  --gray-dark: 34, 41, 57;
-  --box-shadow:
-    0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-    0 16px 32px rgba(var(--gray), 33%);
+  color-scheme: light dark;
+  --accent: light-dark(#2337ff, #8c9bff);
+  --bg: light-dark(#fbfbfd, #14161c);
+  --fg: light-dark(#1c2030, #e8eaf1);
+  --muted: light-dark(#5d6781, #98a1b8);
+  --border: light-dark(#e3e6ee, #2a2f3d);
+  --surface: light-dark(#eef0f6, #20242f);
+  --radius: 16px;
+  --shadow:
+    0 2px 6px rgb(0 0 0 / 8%), 0 8px 24px rgb(0 0 0 / 12%),
+    0 16px 32px rgb(0 0 0 / 12%);
+  --box-shadow: var(--shadow);
+}
+
+/* Make UnoCSS typography follow the color scheme */
+article.prose {
+  --un-prose-body: var(--fg);
+  --un-prose-headings: var(--fg);
+  --un-prose-links: var(--accent);
+  --un-prose-links-hover: var(--accent);
+  --un-prose-lists: var(--muted);
+  --un-prose-hr: var(--border);
+  --un-prose-captions: var(--muted);
+  --un-prose-code: var(--fg);
+  --un-prose-borders: var(--border);
+  --un-prose-bg-soft: var(--surface);
+  --un-prose-quotes: var(--fg);
+  --un-prose-quote-borders: var(--accent);
+  --un-prose-bold: var(--fg);
+  --un-prose-counters: var(--muted);
+  --un-prose-bullets: var(--muted);
 }
 
 body {
-  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-family: "Atkinson Hyperlegible", system-ui, sans-serif;
   margin: 0;
   padding: 0;
+  color: var(--fg);
+  background-color: var(--bg);
+  line-height: 1.6;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -36,6 +61,9 @@ h4,
 h5,
 h6 {
   margin-bottom: 0.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 h1 {
   font-size: 2.2rem;
@@ -58,15 +86,13 @@ b {
 }
 a {
   color: var(--accent);
-}
-a:hover {
-  color: var(--accent);
+  text-underline-offset: 0.2em;
 }
 p {
   margin-bottom: 1em;
 }
 .prose p {
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
 }
 textarea {
   width: 100%;
@@ -74,6 +100,15 @@ textarea {
 }
 input {
   font-size: 16px;
+  color: inherit;
+  background-color: var(--surface);
+  border-color: var(--border);
+}
+button {
+  color: inherit;
+  background-color: var(--surface);
+  border-color: var(--border);
+  cursor: pointer;
 }
 table {
   width: 100%;
@@ -85,12 +120,13 @@ img {
 }
 code {
   padding: 2px 5px;
-  background-color: rgb(var(--gray-light));
-  border-radius: 2px;
+  background-color: var(--surface);
+  border-radius: 4px;
 }
 pre {
   padding: 1.5em;
   border-radius: 8px;
+  background-color: var(--surface);
 }
 pre > code {
   all: unset;
@@ -103,7 +139,61 @@ blockquote {
 }
 hr {
   border: none;
-  border-top: 1px solid rgb(var(--gray-light));
+  border-top: 1px solid var(--border);
+}
+
+/* Image with the title (and tags) inlined on top of it */
+.cover {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+  color: #fff;
+  background-color: var(--surface);
+  isolation: isolate;
+}
+.cover > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 14rem;
+  max-height: 30rem;
+  margin: 0;
+  border-radius: 0;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgb(0 0 0 / 75%) 0%,
+    rgb(0 0 0 / 35%) 45%,
+    transparent 75%
+  );
+  pointer-events: none;
+}
+.cover-body {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  display: grid;
+  gap: 0.6rem;
+  padding: 1.25rem;
+}
+.cover .cover-title {
+  margin: 0;
+  color: inherit;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 40%);
+}
+a.cover:hover {
+  box-shadow: var(--shadow);
+}
+a.cover:hover > img {
+  transform: scale(1.04);
 }
 
 .sr-only {
