@@ -1,7 +1,7 @@
 ---
 title: Tarte de maçã
 description: Tarte de maçã com creme de ovos, sem açúcar adicionado
-tags: Dessert
+tags: [Dessert]
 pubDate: 2024-03-09
 lang: pt-pt
 heroImage: "https://i.imgur.com/KhQ5ODn.jpeg"

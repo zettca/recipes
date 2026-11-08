@@ -1,5 +1,6 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
 const recipes = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/recipes" }),
@@ -9,7 +10,7 @@ const recipes = defineCollection({
       .string()
       .nullish()
       .transform((s) => s || ""),
-    tags: z.string().nullish(),
+    tags: z.array(z.string()).default([]),
     author: z.string().nullish(),
     /** hidden in the homepage */
     hidden: z.boolean().default(false),

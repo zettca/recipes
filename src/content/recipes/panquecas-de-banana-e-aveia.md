@@ -1,7 +1,7 @@
 ---
 title: Panquecas de banana e aveia
 description: Panquecas saudáveis, sem açúcar adicionado
-tags: Snack
+tags: [Snack]
 pubDate: 2024-03-09
 lang: pt-pt
 heroImage: "https://i.imgur.com/hN0b7wM.jpeg"

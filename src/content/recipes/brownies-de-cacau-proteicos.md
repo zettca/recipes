@@ -1,7 +1,7 @@
 ---
 title: Brownies de cacau proteicos
 description: Uma variação do bolo de banana, versão brownie
-tags: Snack
+tags: [Snack]
 pubDate: 2024-03-09
 lang: pt-pt
 heroImage: ""

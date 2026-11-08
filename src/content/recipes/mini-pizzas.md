@@ -1,7 +1,7 @@
 ---
 title: Mini pizzas na air fryer
 description: Mini pizzas de aveia e iogurte, prontas em minutos
-tags: Lunch, Dinner
+tags: [Lunch, Dinner]
 pubDate: 2024-05-22
 lang: pt-pt
 heroImage: "https://i.imgur.com/NJhyfI0.jpeg"

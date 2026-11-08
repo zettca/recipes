@@ -1,7 +1,7 @@
 ---
 title: "Risotto"
 description: "Risotto dummy post"
-tags: italian, lunch, rice, risotto, vegetarian
+tags: [italian, lunch, rice, risotto, vegetarian]
 pubDate: "2023-01-01"
 author: Sofii
 lang: en

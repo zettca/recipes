@@ -1,7 +1,7 @@
 ---
 title: Bolo de banana
 description: Bolo simples de banana e aveia
-tags: Snack
+tags: [Snack]
 pubDate: 2024-03-09
 lang: pt-pt
 heroImage: "https://i.imgur.com/MfDTibW.jpeg"

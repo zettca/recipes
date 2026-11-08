@@ -11,7 +11,7 @@ import {
   UndoRedo,
 } from "@mdxeditor/editor";
 import { kebabCase } from "change-case";
-import { toISODate } from "../../utils";
+import { parseTags, toISODate } from "../../utils";
 import "@mdxeditor/editor/style.css";
 
 function handleSubmit(formData: FormData) {
@@ -20,7 +20,7 @@ function handleSubmit(formData: FormData) {
   const value = `---
 title: ${data.title}
 description: ${data.description}
-tags: ${data.tags}
+tags: ${JSON.stringify(parseTags(String(data.tags)))}
 pubDate: ${toISODate(new Date())}
 lang: en
 ---

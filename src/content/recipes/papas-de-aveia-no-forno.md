@@ -1,7 +1,7 @@
 ---
 title: Papas de aveia no forno com frutos vermelhos
 description: Papas de aveia saudáveis, ideais para congelar
-tags: Snack
+tags: [Snack]
 pubDate: 2024-03-06
 lang: pt-pt
 heroImage: "https://i.imgur.com/EyLDZpP.jpeg"

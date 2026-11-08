@@ -1,7 +1,7 @@
 ---
 title: Soft greek cake
 description: 3 ingredientes, 30 minutos
-tags: Dessert
+tags: [Dessert]
 pubDate: 2024-03-23
 lang: pt-pt
 heroImage: "https://i.imgur.com/sxM5oIG.jpeg"

@@ -1,7 +1,7 @@
 ---
 title: Pianinho Tropical
 description: Piano de porco com ananás e noisettes
-tags: Dinner
+tags: [Lunch,Dinner]
 pubDate: 2026-04-05
 lang: pt-pt
 heroImage: "https://i.imgur.com/EnpaATJ.jpeg"

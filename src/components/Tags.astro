@@ -1,20 +1,16 @@
 ---
 interface Props {
-  tags?: string | null;
+  tags?: string[];
   class?: string;
 }
 
-const { tags, class: className } = Astro.props;
-const tagList = (tags ?? "")
-  .split(",")
-  .map((tag) => tag.trim())
-  .filter(Boolean);
+const { tags = [], class: className } = Astro.props;
 ---
 
 {
-  tagList.length > 0 && (
+  tags.length > 0 && (
     <ul class:list={["tags", className]}>
-      {tagList.map((tag) => (
+      {tags.map((tag) => (
         <li class="tag">{tag}</li>
       ))}
     </ul>
