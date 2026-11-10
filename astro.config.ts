@@ -1,6 +1,5 @@
 import { execSync } from "node:child_process";
 import mdx from "@astrojs/mdx";
-import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 import UnoCSS from "unocss/astro";
@@ -17,7 +16,7 @@ export function remarkModifiedTime() {
 export default defineConfig({
   site: "https://zettca.xyz",
   base: "/recipes",
-  integrations: [mdx(), sitemap(), react(), UnoCSS({ injectReset: true })],
+  integrations: [mdx(), sitemap(), UnoCSS({ injectReset: true })],
   markdown: {
     remarkPlugins: [remarkModifiedTime],
   },

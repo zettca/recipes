@@ -1,0 +1,142 @@
+---
+const fields = [
+  { name: "title", label: "Title", placeholder: "Mushroom Risotto" },
+  {
+    name: "description",
+    label: "Description",
+    placeholder: "Risotto with mushrooms and bacon",
+  },
+  { name: "tags", label: "Tags", placeholder: "italian, rice, yummy" },
+];
+
+const defaultBody = `<h2>Ingredients</h2>
+<ul><li>item 1</li><li>item 2</li></ul>
+<h2>Preparation</h2>
+<ol><li>step 1</li><li>step 2</li></ol>`;
+
+const tools = [
+  { label: "H2", title: "Heading", cmd: "formatBlock", value: "h2" },
+  { label: "H3", title: "Subheading", cmd: "formatBlock", value: "h3" },
+  { label: "¶", title: "Paragraph", cmd: "formatBlock", value: "p" },
+  { label: "B", title: "Bold", cmd: "bold" },
+  { label: "I", title: "Italic", cmd: "italic" },
+  { label: "• List", title: "Bulleted list", cmd: "insertUnorderedList" },
+  { label: "1. List", title: "Numbered list", cmd: "insertOrderedList" },
+  { label: "↶", title: "Undo", cmd: "undo" },
+  { label: "↷", title: "Redo", cmd: "redo" },
+];
+---
+
+<form id="create-form" class="grid gap-4">
+  {
+    fields.map(({ label, ...props }) => (
+      <label class="grid">
+        <span class="font-bold">{label}</span>
+        <input
+          type="text"
+          class="border px-2 py-1 rounded"
+          required={props.name === "title"}
+          {...props}
+        />
+      </label>
+    ))
+  }
+  <div class="grid">
+    <span class="font-bold" id="body-label">Body</span>
+    <div class="flex flex-wrap gap-1 mb-1" role="toolbar">
+      {
+        tools.map(({ label, title, cmd, value }) => (
+          <button
+            type="button"
+            class="border rounded px-2 py-1"
+            title={title}
+            data-cmd={cmd}
+            data-value={value}
+          >
+            {label}
+          </button>
+        ))
+      }
+    </div>
+    <article
+      id="editor"
+      class="prose max-w-none border p-4 rounded min-h-360px"
+      contenteditable="true"
+      role="textbox"
+      aria-multiline="true"
+      aria-labelledby="body-label"
+      set:html={defaultBody}
+    />
+  </div>
+  <button type="submit" class="w-180px border rounded">Submit</button>
+</form>
+
+<script>
+  import { kebabCase } from "change-case";
+  import TurndownService from "turndown";
+  import { parseTags, toISODate } from "../utils";
+
+  const form = document.querySelector<HTMLFormElement>("#create-form")!;
+  const editor = document.querySelector<HTMLElement>("#editor")!;
+
+  const turndown = new TurndownService({
+    headingStyle: "atx",
+    bulletListMarker: "-",
+  });
+  // Compact list items ("- item" instead of "-   item")
+  turndown.addRule("listItem", {
+    filter: "li",
+    replacement(content, node) {
+      const parent = node.parentElement!;
+      const index = Array.from(parent.children).indexOf(node as Element);
+      const prefix = parent.nodeName === "OL" ? `${index + 1}. ` : "- ";
+      const text = content
+        .replace(/^\n+/, "")
+        .replace(/\n+$/, "")
+        .replace(/\n/g, "\n  ");
+      return prefix + text + (node.nextSibling ? "\n" : "");
+    },
+  });
+
+  document.execCommand("defaultParagraphSeparator", false, "p");
+
+  // Keep the editor selection when clicking toolbar buttons
+  const toolbar = form.querySelector("[role=toolbar]")!;
+  toolbar.addEventListener("mousedown", (event) => event.preventDefault());
+  toolbar.addEventListener("click", (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLElement>(
+      "[data-cmd]",
+    );
+    if (!button) return;
+    editor.focus();
+    document.execCommand(button.dataset.cmd!, false, button.dataset.value);
+  });
+
+  // Avoid pasting foreign styles and markup
+  editor.addEventListener("paste", (event) => {
+    event.preventDefault();
+    const text = event.clipboardData?.getData("text/plain") ?? "";
+    document.execCommand("insertText", false, text);
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = Object.fromEntries(new FormData(form));
+    const filename = `${kebabCase(String(data.title))}.md`;
+    const value = `---
+title: ${data.title}
+description: ${data.description}
+tags: ${JSON.stringify(parseTags(String(data.tags)))}
+pubDate: ${toISODate(new Date())}
+lang: en
+---
+
+${turndown.turndown(editor.innerHTML)}
+`;
+
+    const searchParams = new URLSearchParams({ filename, value });
+    const url = `https://github.com/zettca/recipes/new/master/src/content/recipes?${searchParams}`;
+
+    window.open(url, "_blank");
+  });
+</script>
