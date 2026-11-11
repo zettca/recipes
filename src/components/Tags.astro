@@ -7,15 +7,9 @@ interface Props {
 const { tags = [], class: className } = Astro.props;
 ---
 
-{
-  tags.length > 0 && (
-    <ul class:list={["tags", className]}>
-      {tags.map((tag) => (
-        <li class="tag">{tag}</li>
-      ))}
-    </ul>
-  )
-}
+<ul class:list={["tags", className]}>
+  {tags.map((tag) => <li class="tag">{tag}</li>)}
+</ul>
 
 <style>
   .tags {

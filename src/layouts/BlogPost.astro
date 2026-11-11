@@ -36,7 +36,7 @@ const meta = { pubDate, lastModified, editUrl };
         </nav>
         {
           heroImage ? (
-            <header class="cover mb-8">
+            <header class="cover mb-8" transition:name={`cover-${id}`}>
               <img
                 class="aspect-square md:aspect-video"
                 src={heroImage}

@@ -31,7 +31,10 @@ const posts = (await getCollection("recipes"))
         <ul class="grid list-none p-0 m-0 grid-cols-1 md:grid-cols-2 gap-8">
           {
             posts.map((post) => (
-              <li class="md:first:col-span-2">
+              <li
+                class="md:first:col-span-2"
+                transition:name={`cover-${post.id}`}
+              >
                 <Link href={post.id} class="cover !block">
                   <img
                     height={320}

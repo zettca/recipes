@@ -1,6 +1,7 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
+import { ClientRouter } from "astro:transitions";
 import { DEFAULT_HERO } from "../consts";
 import "../styles/global.css";
 
@@ -16,6 +17,7 @@ const { title, description, image = DEFAULT_HERO } = Astro.props;
 ---
 
 <!-- Global Metadata -->
+<ClientRouter />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link
