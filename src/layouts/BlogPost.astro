@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
+import Link from "../components/Link.astro";
 import PostMeta from "../components/PostMeta.astro";
 import Tags from "../components/Tags.astro";
 
@@ -27,6 +28,12 @@ const meta = { pubDate, lastModified, editUrl };
   <body>
     <main class="w-full m-0">
       <article class="prose m-auto text-lg text-pretty">
+        <nav class="not-prose mb-4">
+          <Link href="/" class="flex items-center gap-1 hover:underline">
+            <span class="i-tabler-arrow-left" aria-hidden="true"></span>
+            All recipes
+          </Link>
+        </nav>
         {
           heroImage ? (
             <header class="cover mb-8">

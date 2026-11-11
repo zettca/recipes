@@ -21,7 +21,9 @@ const posts = (await getCollection("recipes"))
       <header class="flex flex-wrap justify-between items-baseline mb-8">
         <h1>🥘 Recipes</h1>
         <p class="text-lg text-end">
-          <Link href="new">+ Add recipe</Link>
+          <Link href="new" class="flex items-center gap-1 hover:underline">
+            <span class="i-tabler-plus" aria-hidden="true"></span> Add recipe
+          </Link>
         </p>
       </header>
 
