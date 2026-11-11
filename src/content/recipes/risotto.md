@@ -21,5 +21,3 @@ This is an example of a recipe post. WIP
 
 1. Cook
 2. Eat 😋
-
-<img src="https://i.imgur.com/QtbWQ2q.png" alt="Rice" width="600">

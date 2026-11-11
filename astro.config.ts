@@ -17,6 +17,9 @@ export default defineConfig({
   site: "https://zettca.xyz",
   base: "/recipes",
   integrations: [mdx(), sitemap(), UnoCSS({ injectReset: true })],
+  image: {
+    domains: ["i.imgur.com"],
+  },
   markdown: {
     remarkPlugins: [remarkModifiedTime],
   },

@@ -28,5 +28,3 @@ heroImage: "https://i.imgur.com/hN0b7wM.jpeg"
 7. Sirva simples ou com canela
 
 Dica: Pode utilizar manteiga de amendoim ou iogurte proteico de chocolate como topping ou entre 2 panquecas
-
-<img src="https://i.imgur.com/hN0b7wM.jpeg" alt="Panquecas de banana" width="600">

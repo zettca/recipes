@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Link from "../components/Link.astro";
@@ -30,15 +31,22 @@ const posts = (await getCollection("recipes"))
       <section>
         <ul class="grid list-none p-0 m-0 grid-cols-1 md:grid-cols-2 gap-8">
           {
-            posts.map((post) => (
+            posts.map((post, i) => (
               <li
                 class="md:first:col-span-2"
                 transition:name={`cover-${post.id}`}
               >
                 <Link href={post.id} class="cover !block">
-                  <img
-                    height={320}
+                  <Image
                     src={post.data.heroImage || DEFAULT_HERO}
+                    inferSize
+                    widths={[480, 768, 1024]}
+                    sizes={
+                      i === 0
+                        ? "(min-width: 1024px) 1024px, 100vw"
+                        : "(min-width: 768px) 500px, 100vw"
+                    }
+                    loading={i === 0 ? "eager" : "lazy"}
                     class:list={[
                       "aspect-video",
                       !post.data.heroImage && "blur-4px scale-110",

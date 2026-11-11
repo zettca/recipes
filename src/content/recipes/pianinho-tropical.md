@@ -31,5 +31,3 @@ Para 2 pessoas
 7. Pincelar as batatas e o ananás com molho de soja e mel
 8. Subir o forno para 200ºC e cozinhar 10 minutos. Gratinar 3 minutos
 9. Retirar do forno e decorar com tomate cherry e rúcula
-
-<img src="https://i.imgur.com/EnpaATJ.jpeg" alt="Pianinho tropical" width="600">

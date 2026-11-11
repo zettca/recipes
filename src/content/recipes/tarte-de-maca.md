@@ -37,5 +37,3 @@ heroImage: "https://i.imgur.com/KhQ5ODn.jpeg"
 14. Pré-aqueça o forno a 180ºC, coloque a tarte de maçã cerca de 50 minutos e voilà!
 
 Nota: Eu faço os passos 1-3 para permitir que fiquemos com uma tarte mais doce, sem necessidade de usar açúcar. Se preferir, poderá saltar esses passos e colocar até 100g de açúcar no passo 4 e bater bem.
-
-<img src="https://i.imgur.com/KhQ5ODn.jpeg" alt="Tarte de maçã" width="600">

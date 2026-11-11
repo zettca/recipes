@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Link from "../components/Link.astro";
@@ -37,9 +38,14 @@ const meta = { pubDate, lastModified, editUrl };
         {
           heroImage ? (
             <header class="cover mb-8" transition:name={`cover-${id}`}>
-              <img
+              <Image
                 class="aspect-square md:aspect-video"
                 src={heroImage}
+                inferSize
+                widths={[480, 768, 1024]}
+                sizes="(min-width: 800px) 800px, 100vw"
+                loading="eager"
+                fetchpriority="high"
                 alt=""
               />
               <div class="cover-body">

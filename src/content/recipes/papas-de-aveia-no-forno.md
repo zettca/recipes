@@ -27,5 +27,3 @@ Serve 16 porções (aprox. 150 kcal cada)
 6. Deixe arrefecer e corte aos pedacinhos
 
 Dica: Pode congelar. À medida que queira consumir, basta aquecer no micro-ondas ou forno, ou deixar descongelar à temperatura ambiente.
-
-<img src="https://i.imgur.com/EyLDZpP.jpeg" alt="Papas de aveia no forno com frutos vermelhos" width="600">

@@ -26,5 +26,3 @@ heroImage: "https://i.imgur.com/MfDTibW.jpeg"
 6. Polvilhe por cima com coco ralado e canela, a gosto
 7. Leve ao forno pré-aquecido a 180ºC durante 45-55 minutos
 8. Desenforme ainda quente, corte em fatias e desfrute!
-
-<img src="https://i.imgur.com/MfDTibW.jpeg" alt="Bolo de banana" width="600">

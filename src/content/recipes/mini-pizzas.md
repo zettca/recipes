@@ -35,5 +35,3 @@ Retire as mini massas da air fryer e coloque os toppings a gosto:
 2. Bacon
 3. Queijo mozzarella
 4. Leve à air fryer por 6 minutos a 180ºC
-
-<img src="https://i.imgur.com/NJhyfI0.jpeg" alt="mini-pizzas" width="600">
