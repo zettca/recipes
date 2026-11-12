@@ -1,7 +1,7 @@
 import { execSync } from "node:child_process";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import UnoCSS from "unocss/astro";
 
 export function remarkModifiedTime() {
@@ -18,7 +18,17 @@ export default defineConfig({
   base: "/recipes",
   integrations: [mdx(), sitemap(), UnoCSS({ injectReset: true })],
   image: {
-    domains: ["i.imgur.com", "images.pexels.com"],
+    domains: ["i.imgur.com", "images.pexels.com", "res.cloudinary.com"],
+  },
+  env: {
+    schema: {
+      // Cover photo uploads in the "new recipe" form (disabled when unset)
+      PUBLIC_UPLOAD_URL: envField.string({
+        context: "client",
+        access: "public",
+        optional: true,
+      }),
+    },
   },
   markdown: {
     remarkPlugins: [remarkModifiedTime],

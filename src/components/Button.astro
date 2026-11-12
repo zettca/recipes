@@ -1,0 +1,44 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
+  title?: string;
+  /** Highlighted call-to-action style */
+  primary?: boolean;
+}
+
+const { title, primary, class: className, ...others } = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={["btn border rounded px-2 py-1", { primary }, className]}
+  title={title}
+  {...others}
+>
+  <slot />
+</button>
+
+<style>
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: light-dark(#fff, #000);
+    font-weight: bold;
+  }
+  .btn.primary:not(:disabled) {
+    animation: btn-pulse 1.5s ease-out infinite;
+  }
+  @keyframes btn-pulse {
+    from {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent);
+    }
+    to {
+      box-shadow: 0 0 0 8px transparent;
+    }
+  }
+</style>

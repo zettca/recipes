@@ -1,5 +1,5 @@
 ---
-import ToolButton from "./ToolButton.astro";
+import Button from "./Button.astro";
 
 interface Props {
   /** Form field name holding the Markdown output */
@@ -24,26 +24,22 @@ const labelId = `${name}-label`;
 <div class="grid" data-body-input={name}>
   <span class="font-bold" id={labelId}>{label}</span>
   <div class="flex flex-wrap gap-1 mb-1" role="toolbar">
-    <ToolButton title="Heading" data-cmd="formatBlock" data-value="h2">
-      H2
-    </ToolButton>
-    <ToolButton title="Subheading" data-cmd="formatBlock" data-value="h3">
+    <Button title="Heading" data-cmd="formatBlock" data-value="h2"> H2 </Button>
+    <Button title="Subheading" data-cmd="formatBlock" data-value="h3">
       H3
-    </ToolButton>
-    <ToolButton title="Paragraph" data-cmd="formatBlock" data-value="p">
-      ¶
-    </ToolButton>
-    <ToolButton title="Bold" data-cmd="bold"><b>B</b></ToolButton>
-    <ToolButton title="Italic" data-cmd="italic"><i>I</i></ToolButton>
-    <ToolButton title="Underline" data-cmd="underline"><u>U</u></ToolButton>
-    <ToolButton title="Bulleted list" data-cmd="insertUnorderedList">
+    </Button>
+    <Button title="Paragraph" data-cmd="formatBlock" data-value="p"> ¶ </Button>
+    <Button title="Bold" data-cmd="bold"><b>B</b></Button>
+    <Button title="Italic" data-cmd="italic"><i>I</i></Button>
+    <Button title="Underline" data-cmd="underline"><u>U</u></Button>
+    <Button title="Bulleted list" data-cmd="insertUnorderedList">
       • List
-    </ToolButton>
-    <ToolButton title="Numbered list" data-cmd="insertOrderedList">
+    </Button>
+    <Button title="Numbered list" data-cmd="insertOrderedList">
       1. List
-    </ToolButton>
-    <ToolButton title="Undo" data-cmd="undo">↶</ToolButton>
-    <ToolButton title="Redo" data-cmd="redo">↷</ToolButton>
+    </Button>
+    <Button title="Undo" data-cmd="undo">↶</Button>
+    <Button title="Redo" data-cmd="redo">↷</Button>
   </div>
   <article
     class="prose max-w-none border p-4 rounded min-h-360px"

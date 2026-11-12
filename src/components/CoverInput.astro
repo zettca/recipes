@@ -1,5 +1,7 @@
 ---
 import { DEFAULT_HERO } from "../consts";
+import { canUpload } from "../utils/upload";
+import Button from "./Button.astro";
 import Input from "./Input.astro";
 import PostMeta from "./PostMeta.astro";
 import Tags from "./Tags.astro";
@@ -27,7 +29,36 @@ const {
   data-title-name={titleName}
   data-tags-name={tagsName}
 >
-  <Input type="url" name={name} label={label} placeholder={DEFAULT_HERO} />
+  <div class="flex items-end gap-2">
+    <div class="flex-1 min-w-0 grid">
+      <Input type="url" name={name} label={label} placeholder={DEFAULT_HERO} />
+    </div>
+    {
+      canUpload && (
+        <>
+          <input type="file" accept="image/*" hidden data-cover-file />
+          <Button title="Choose an image to preview" data-cover-choose>
+            Choose image
+          </Button>
+          <Button
+            primary
+            title="Upload the chosen image"
+            data-cover-upload
+            disabled
+          >
+            Upload
+          </Button>
+        </>
+      )
+    }
+  </div>
+  <p
+    class="text-sm m-0 px-2 py-1 rounded border"
+    role="status"
+    data-cover-status
+    hidden
+  >
+  </p>
   <div class="grid gap-1">
     <span class="font-bold">Cover preview</span>
     <div class="cover">
@@ -44,6 +75,7 @@ const {
 
 <script>
   import { parseTags } from "../utils";
+  import { uploadImage } from "../utils/upload";
 
   document
     .querySelectorAll<HTMLElement>("[data-cover-input]")
@@ -60,7 +92,9 @@ const {
       const title = root.querySelector<HTMLElement>("[data-cover-title]")!;
       const tags = root.querySelector<HTMLElement>("[data-cover-tags] .tags")!;
       const date = root.querySelector("time")!;
-      const tagItem = root.querySelector("template")!.content.querySelector("li")!;
+      const tagItem = root
+        .querySelector("template")!
+        .content.querySelector("li")!;
       const defaultHero = img.src;
 
       const setHero = (src: string) => {
@@ -73,6 +107,87 @@ const {
       img.addEventListener("error", () => {
         if (img.src !== defaultHero) setHero("");
       });
+
+      const fileInput =
+        root.querySelector<HTMLInputElement>("[data-cover-file]");
+      if (fileInput) {
+        const chooseBtn = root.querySelector<HTMLButtonElement>(
+          "[data-cover-choose]",
+        )!;
+        const uploadBtn = root.querySelector<HTMLButtonElement>(
+          "[data-cover-upload]",
+        )!;
+        const status = root.querySelector<HTMLElement>("[data-cover-status]")!;
+        let previewUrl: string | undefined;
+
+        const statusStyles = {
+          info: ["border-blue-500", "bg-blue-500/10"],
+          success: ["border-green-600", "bg-green-600/10"],
+          error: ["border-red-600", "bg-red-600/10"],
+        };
+        const setStatus = (
+          message = "",
+          kind: keyof typeof statusStyles = "info",
+        ) => {
+          status.hidden = !message;
+          status.textContent = message;
+          Object.values(statusStyles).forEach((c) =>
+            status.classList.remove(...c),
+          );
+          status.classList.add(...statusStyles[kind]);
+        };
+        const revokePreview = () => {
+          if (previewUrl) URL.revokeObjectURL(previewUrl);
+          previewUrl = undefined;
+        };
+
+        chooseBtn.addEventListener("click", () => fileInput.click());
+
+        fileInput.addEventListener("change", () => {
+          const file = fileInput.files?.[0];
+          revokePreview();
+          uploadBtn.disabled = !file;
+          setStatus();
+          if (!file) return;
+          previewUrl = URL.createObjectURL(file);
+          setHero(previewUrl);
+          setStatus(
+            `Previewing "${file.name}" locally. Click "Upload" to save it and fill in the image URL.`,
+          );
+        });
+
+        uploadBtn.addEventListener("click", async () => {
+          const file = fileInput.files?.[0];
+          if (!file) return;
+          uploadBtn.disabled = chooseBtn.disabled = true;
+          setStatus("Uploading…");
+          try {
+            const url = await uploadImage(file);
+            input.value = url;
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+            fileInput.value = "";
+            revokePreview();
+            setStatus("Uploaded. The image URL has been filled in.", "success");
+          } catch (error) {
+            uploadBtn.disabled = false;
+            setStatus(
+              error instanceof Error ? error.message : "Upload failed",
+              "error",
+            );
+          } finally {
+            chooseBtn.disabled = false;
+          }
+        });
+
+        // Typing a URL discards the pending local file
+        input.addEventListener("input", (event) => {
+          if (!event.isTrusted || !fileInput.files?.length) return;
+          fileInput.value = "";
+          uploadBtn.disabled = true;
+          revokePreview();
+          setStatus();
+        });
+      }
 
       titleInput.addEventListener("input", () => {
         title.textContent = titleInput.value.trim() || "Title";
@@ -90,6 +205,8 @@ const {
 
       const now = new Date();
       date.dateTime = now.toISOString();
-      date.textContent = now.toLocaleDateString("en-uk", { dateStyle: "medium" });
+      date.textContent = now.toLocaleDateString("en-uk", {
+        dateStyle: "medium",
+      });
     });
 </script>
