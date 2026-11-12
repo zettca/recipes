@@ -1,0 +1,95 @@
+---
+import { DEFAULT_HERO } from "../consts";
+import Input from "./Input.astro";
+import PostMeta from "./PostMeta.astro";
+import Tags from "./Tags.astro";
+
+interface Props {
+  /** Form field name holding the image URL */
+  name?: string;
+  label?: string;
+  /** Names of the sibling form fields shown in the preview */
+  titleName?: string;
+  tagsName?: string;
+}
+
+const {
+  name = "heroImage",
+  label = "Cover image URL",
+  titleName = "title",
+  tagsName = "tags",
+} = Astro.props;
+---
+
+<div
+  class="grid gap-2"
+  data-cover-input={name}
+  data-title-name={titleName}
+  data-tags-name={tagsName}
+>
+  <Input type="url" name={name} label={label} placeholder={DEFAULT_HERO} />
+  <div class="grid gap-1">
+    <span class="font-bold">Cover preview</span>
+    <div class="cover">
+      <img src={DEFAULT_HERO} alt="" class="aspect-video blur-4px scale-110" />
+      <div class="cover-body">
+        <div data-cover-tags><Tags tags={[]} /></div>
+        <h2 class="cover-title text-2xl" data-cover-title>Title</h2>
+        <PostMeta pubDate={new Date()} class="opacity-85" />
+      </div>
+    </div>
+  </div>
+  <template><Tags tags={["tag"]} /></template>
+</div>
+
+<script>
+  import { parseTags } from "../utils";
+
+  document
+    .querySelectorAll<HTMLElement>("[data-cover-input]")
+    .forEach((root) => {
+      const form = root.closest("form")!;
+      const field = (name?: string) =>
+        form.querySelector<HTMLInputElement>(`[name="${name}"]`)!;
+
+      const input = field(root.dataset.coverInput);
+      const titleInput = field(root.dataset.titleName);
+      const tagsInput = field(root.dataset.tagsName);
+
+      const img = root.querySelector("img")!;
+      const title = root.querySelector<HTMLElement>("[data-cover-title]")!;
+      const tags = root.querySelector<HTMLElement>("[data-cover-tags] .tags")!;
+      const date = root.querySelector("time")!;
+      const tagItem = root.querySelector("template")!.content.querySelector("li")!;
+      const defaultHero = img.src;
+
+      const setHero = (src: string) => {
+        img.src = src || defaultHero;
+        img.classList.toggle("blur-4px", !src);
+        img.classList.toggle("scale-110", !src);
+      };
+
+      input.addEventListener("input", () => setHero(input.value.trim()));
+      img.addEventListener("error", () => {
+        if (img.src !== defaultHero) setHero("");
+      });
+
+      titleInput.addEventListener("input", () => {
+        title.textContent = titleInput.value.trim() || "Title";
+      });
+
+      tagsInput.addEventListener("input", () => {
+        tags.replaceChildren(
+          ...parseTags(tagsInput.value).map((tag) => {
+            const item = tagItem.cloneNode(true) as HTMLElement;
+            item.textContent = tag;
+            return item;
+          }),
+        );
+      });
+
+      const now = new Date();
+      date.dateTime = now.toISOString();
+      date.textContent = now.toLocaleDateString("en-uk", { dateStyle: "medium" });
+    });
+</script>

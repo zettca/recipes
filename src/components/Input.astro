@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"input"> {
+  label: string;
+}
+
+const { label, type = "text", class: className, ...props } = Astro.props;
+---
+
+<label class="grid">
+  <span class="font-bold">{label}</span>
+  <input
+    type={type}
+    class:list={["border px-2 py-1 rounded", className]}
+    {...props}
+  />
+</label>

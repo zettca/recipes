@@ -1,31 +1,18 @@
 ---
 import BodyInput from "./BodyInput.astro";
-
-const fields = [
-  { name: "title", label: "Title", placeholder: "Mushroom Risotto" },
-  {
-    name: "description",
-    label: "Description",
-    placeholder: "Risotto with mushrooms and bacon",
-  },
-  { name: "tags", label: "Tags", placeholder: "italian, rice, yummy" },
-];
+import CoverInput from "./CoverInput.astro";
+import Input from "./Input.astro";
 ---
 
 <form id="create-form" class="grid gap-4">
-  {
-    fields.map(({ label, ...props }) => (
-      <label class="grid">
-        <span class="font-bold">{label}</span>
-        <input
-          type="text"
-          class="border px-2 py-1 rounded"
-          required={props.name === "title"}
-          {...props}
-        />
-      </label>
-    ))
-  }
+  <Input required name="title" label="Title" placeholder="Mushroom Risotto" />
+  <Input
+    name="description"
+    label="Description"
+    placeholder="Risotto with mushrooms and bacon"
+  />
+  <Input name="tags" label="Tags" placeholder="italian, rice, yummy" />
+  <CoverInput name="heroImage" />
   <BodyInput name="body" />
   <button type="submit" class="w-180px border rounded">Submit</button>
 </form>
@@ -43,8 +30,9 @@ const fields = [
     const value = `---
 title: ${data.title}
 description: ${data.description}
-tags: ${JSON.stringify(parseTags(String(data.tags)))}
+tags: ${parseTags(String(data.tags)).join(",")}
 pubDate: ${toISODate(new Date())}
+heroImage: ${String(data.heroImage ?? "").trim()}
 lang: en
 ---
 
