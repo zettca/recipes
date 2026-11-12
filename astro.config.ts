@@ -18,7 +18,7 @@ export default defineConfig({
   base: "/recipes",
   integrations: [mdx(), sitemap(), UnoCSS({ injectReset: true })],
   image: {
-    domains: ["i.imgur.com"],
+    domains: ["i.imgur.com", "images.pexels.com"],
   },
   markdown: {
     remarkPlugins: [remarkModifiedTime],
