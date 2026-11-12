@@ -1,0 +1,112 @@
+---
+import ToolButton from "./ToolButton.astro";
+
+interface Props {
+  /** Form field name holding the Markdown output */
+  name?: string;
+  label?: string;
+  /** Initial content, as HTML */
+  value?: string;
+}
+
+const {
+  name = "body",
+  label = "Body",
+  value = `<h2>Ingredients</h2>
+<ul><li>item 1</li><li>item 2</li></ul>
+<h2>Preparation</h2>
+<ol><li>step 1</li><li>step 2</li></ol>`,
+} = Astro.props;
+
+const labelId = `${name}-label`;
+---
+
+<div class="grid" data-body-input={name}>
+  <span class="font-bold" id={labelId}>{label}</span>
+  <div class="flex flex-wrap gap-1 mb-1" role="toolbar">
+    <ToolButton title="Heading" data-cmd="formatBlock" data-value="h2">
+      H2
+    </ToolButton>
+    <ToolButton title="Subheading" data-cmd="formatBlock" data-value="h3">
+      H3
+    </ToolButton>
+    <ToolButton title="Paragraph" data-cmd="formatBlock" data-value="p">
+      ¶
+    </ToolButton>
+    <ToolButton title="Bold" data-cmd="bold"><b>B</b></ToolButton>
+    <ToolButton title="Italic" data-cmd="italic"><i>I</i></ToolButton>
+    <ToolButton title="Underline" data-cmd="underline"><u>U</u></ToolButton>
+    <ToolButton title="Bulleted list" data-cmd="insertUnorderedList">
+      • List
+    </ToolButton>
+    <ToolButton title="Numbered list" data-cmd="insertOrderedList">
+      1. List
+    </ToolButton>
+    <ToolButton title="Undo" data-cmd="undo">↶</ToolButton>
+    <ToolButton title="Redo" data-cmd="redo">↷</ToolButton>
+  </div>
+  <article
+    class="prose max-w-none border p-4 rounded min-h-360px"
+    contenteditable="true"
+    role="textbox"
+    aria-multiline="true"
+    aria-labelledby={labelId}
+    set:html={value}
+  />
+</div>
+
+<script>
+  import TurndownService from "turndown";
+
+  const turndown = new TurndownService({
+    headingStyle: "atx",
+    bulletListMarker: "-",
+  });
+  // Compact list items ("- item" instead of "-   item")
+  turndown.addRule("listItem", {
+    filter: "li",
+    replacement(content, node) {
+      const parent = node.parentElement!;
+      const index = Array.from(parent.children).indexOf(node as Element);
+      const prefix = parent.nodeName === "OL" ? `${index + 1}. ` : "- ";
+      const text = content
+        .replace(/^\n+/, "")
+        .replace(/\n+$/, "")
+        .replace(/\n/g, "\n  ");
+      return prefix + text + (node.nextSibling ? "\n" : "");
+    },
+  });
+
+  document.execCommand("defaultParagraphSeparator", false, "p");
+
+  document
+    .querySelectorAll<HTMLElement>("[data-body-input]")
+    .forEach((root) => {
+      const name = root.dataset.bodyInput!;
+      const editor = root.querySelector<HTMLElement>("[contenteditable]")!;
+      const toolbar = root.querySelector<HTMLElement>("[role=toolbar]")!;
+
+      // Keep the editor selection when clicking toolbar buttons
+      toolbar.addEventListener("mousedown", (event) => event.preventDefault());
+      toolbar.addEventListener("click", (event) => {
+        const button = (event.target as HTMLElement).closest<HTMLElement>(
+          "[data-cmd]",
+        );
+        if (!button) return;
+        editor.focus();
+        document.execCommand(button.dataset.cmd!, false, button.dataset.value);
+      });
+
+      // Avoid pasting foreign styles and markup
+      editor.addEventListener("paste", (event) => {
+        event.preventDefault();
+        const text = event.clipboardData?.getData("text/plain") ?? "";
+        document.execCommand("insertText", false, text);
+      });
+
+      // Expose the content as Markdown to `new FormData(form)`
+      root.closest("form")?.addEventListener("formdata", (event) => {
+        event.formData.set(name, turndown.turndown(editor.innerHTML));
+      });
+    });
+</script>
